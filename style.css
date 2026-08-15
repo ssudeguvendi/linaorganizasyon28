@@ -153,7 +153,7 @@ a {
   position: relative;
   display: flex;
   align-items: center;
-  background-image: url("images/hero.jpg");
+  background-image: url("lina-sahil.jpeg");
   background-size: cover;
   background-position: center 56%;
   isolation: isolate;
@@ -444,7 +444,7 @@ a {
   padding: 70px 7vw;
   background:
     linear-gradient(rgba(52,41,37,.46), rgba(52,41,37,.48)),
-    url("images/hero.jpg") center 62% / cover no-repeat;
+    url("lina-sahil.jpeg") center 62% / cover no-repeat;
   background-attachment: fixed;
 }
 
