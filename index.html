@@ -137,15 +137,59 @@
       </div>
     </section>
 
-    <section class="gallery" id="galeri">
-      <div class="gallery-card reveal">
-        <p class="script small">Anılarınız bizimle güzelleşir.</p>
-        <h2>Hayalinizdeki atmosferi birlikte tasarlayalım.</h2>
-        <a class="btn btn-light" href="https://www.instagram.com/linaorganizasyon28/" target="_blank" rel="noreferrer">
-          Organizasyonlarımızı Görün
-        </a>
+    <section class="concepts section" id="galeri">
+      <div class="section-title reveal">
+        <p class="eyebrow">Konseptler</p>
+        <h2>Her hikâyeye özel bir atmosfer</h2>
+        <div class="ornament dark">
+          <span></span><b>✦</b><span></span>
+        </div>
+        <p class="concepts-intro">Hayalinizdeki kutlamaya dokunun, seçkin detaylardan oluşan kataloğu keşfedin.</p>
+      </div>
+
+      <div class="concept-grid">
+        <button class="concept-card reveal" type="button" data-concept="kina" aria-haspopup="dialog">
+          <img src="konseptler/kina.jpg" alt="Lüks kına gecesi konsepti" loading="lazy">
+          <span class="concept-card-shade"></span>
+          <span class="concept-card-copy"><small>Geleneksel zarafet</small><strong>Kına</strong><i>Galeriyi keşfet <b>→</b></i></span>
+        </button>
+
+        <button class="concept-card reveal" type="button" data-concept="dugun" aria-haspopup="dialog">
+          <img src="konseptler/dugun.jpg" alt="Şampanya tonlarında lüks düğün konsepti" loading="lazy">
+          <span class="concept-card-shade"></span>
+          <span class="concept-card-copy"><small>Zamansız bir masal</small><strong>Düğün</strong><i>Galeriyi keşfet <b>→</b></i></span>
+        </button>
+
+        <button class="concept-card reveal" type="button" data-concept="nisan" aria-haspopup="dialog">
+          <img src="konseptler/nisan.jpg" alt="Çiçeklerle hazırlanmış lüks nişan konsepti" loading="lazy">
+          <span class="concept-card-shade"></span>
+          <span class="concept-card-copy"><small>Birlikte ilk adım</small><strong>Nişan</strong><i>Galeriyi keşfet <b>→</b></i></span>
+        </button>
+
+        <button class="concept-card reveal" type="button" data-concept="evlilik-teklifi" aria-haspopup="dialog">
+          <img src="konseptler/evlilik-teklifi.jpg" alt="Romantik ve lüks evlilik teklifi konsepti" loading="lazy">
+          <span class="concept-card-shade"></span>
+          <span class="concept-card-copy"><small>Unutulmaz bir evet</small><strong>Evlilik Teklifi</strong><i>Galeriyi keşfet <b>→</b></i></span>
+        </button>
       </div>
     </section>
+
+    <div class="catalog" id="conceptCatalog" role="dialog" aria-modal="true" aria-labelledby="catalogTitle" hidden>
+      <div class="catalog-backdrop" data-catalog-close></div>
+      <div class="catalog-panel">
+        <button class="catalog-close" type="button" data-catalog-close aria-label="Kataloğu kapat"><span></span><span></span></button>
+        <header class="catalog-header">
+          <p class="eyebrow">Lina özel seçkisi</p>
+          <h2 id="catalogTitle"></h2>
+          <p id="catalogDescription"></p>
+        </header>
+        <div class="catalog-feature">
+          <img id="catalogMainImage" src="" alt="">
+          <span class="catalog-counter" id="catalogCounter"></span>
+        </div>
+        <div class="catalog-thumbnails" id="catalogThumbnails" aria-label="Katalog fotoğrafları"></div>
+      </div>
+    </div>
 
     <section class="contact section" id="iletisim">
       <div class="contact-copy reveal">

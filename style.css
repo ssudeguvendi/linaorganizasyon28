@@ -446,41 +446,266 @@ a {
   line-height: 1.65;
 }
 
-.gallery {
-  min-height: 74vh;
+.concepts {
+  background:
+    radial-gradient(circle at 8% 12%, rgba(231,181,174,.18), transparent 30%),
+    linear-gradient(180deg, #fffaf6 0%, #f7eee6 100%);
+}
+
+.concepts .section-title {
+  max-width: 760px;
+  margin-inline: auto;
+}
+
+.concepts-intro {
+  max-width: 620px;
+  margin: 20px auto 0;
+  font-size: .88rem;
+}
+
+.concept-grid {
+  max-width: 1320px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.concept-card {
+  position: relative;
+  min-height: 480px;
+  overflow: hidden;
+  padding: 0;
+  border: 1px solid rgba(202,163,107,.5);
+  border-radius: 26px;
+  background: #3b2e29;
+  color: white;
+  cursor: pointer;
+  text-align: left;
+  box-shadow: 0 22px 54px rgba(71,48,39,.12);
+}
+
+.concept-card::after {
+  content: "";
+  position: absolute;
+  inset: 14px;
+  z-index: 2;
+  border: 1px solid rgba(231,207,171,.52);
+  border-radius: 18px;
+  pointer-events: none;
+}
+
+.concept-card img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  object-fit: cover;
+  transition: transform .7s cubic-bezier(.2,.75,.25,1);
+}
+
+.concept-card-shade {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(180deg, rgba(27,18,15,.03) 32%, rgba(27,18,15,.2) 58%, rgba(27,18,15,.78) 100%);
+}
+
+.concept-card-copy {
+  position: absolute;
+  z-index: 3;
+  left: 48px;
+  right: 48px;
+  bottom: 42px;
+  display: flex;
+  flex-direction: column;
+  text-shadow: 0 2px 18px rgba(22,14,11,.42);
+}
+
+.concept-card-copy small {
+  margin-bottom: 4px;
+  color: var(--champagne-soft);
+  font: 500 .66rem/1.4 "Montserrat", sans-serif;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+}
+
+.concept-card-copy strong {
+  font: 500 clamp(2.8rem, 5vw, 4.6rem)/.95 "Cormorant Garamond", serif;
+  letter-spacing: .02em;
+}
+
+.concept-card-copy i {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 16px;
+  font: normal 500 .65rem/1 "Montserrat", sans-serif;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.concept-card-copy i b {
+  font-size: 1rem;
+  transition: transform .3s ease;
+}
+
+.concept-card:hover img,
+.concept-card:focus-visible img {
+  transform: scale(1.045);
+}
+
+.concept-card:hover .concept-card-copy i b,
+.concept-card:focus-visible .concept-card-copy i b {
+  transform: translateX(5px);
+}
+
+.concept-card:focus-visible {
+  outline: 3px solid var(--champagne);
+  outline-offset: 5px;
+}
+
+body.catalog-open {
+  overflow: hidden;
+}
+
+.catalog[hidden] {
+  display: none;
+}
+
+.catalog {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
   display: grid;
   place-items: center;
-  padding: 70px 7vw;
-  background:
-    linear-gradient(rgba(52,41,37,.46), rgba(52,41,37,.48)),
-    url("lina-sahil.jpeg") center 62% / cover no-repeat;
-  background-attachment: fixed;
+  padding: 24px;
 }
 
-.gallery-card {
-  width: min(780px, 92vw);
-  padding: 60px;
-  text-align: center;
-  border: 1px solid rgba(255,255,255,.4);
-  background: rgba(255,250,246,.88);
-  backdrop-filter: blur(15px);
+.catalog-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(30,22,19,.88);
+  backdrop-filter: blur(12px);
+}
+
+.catalog-panel {
+  position: relative;
+  z-index: 1;
+  width: min(1180px, 100%);
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
+  padding: 48px;
+  border: 1px solid rgba(231,207,171,.42);
   border-radius: 28px;
+  background: linear-gradient(145deg, #fffaf6, #f1e3d8);
+  box-shadow: 0 30px 90px rgba(0,0,0,.35);
 }
 
-.script.small {
-  font-size: clamp(2rem, 4vw, 3.5rem);
+.catalog-close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  z-index: 3;
+  width: 46px;
+  height: 46px;
+  border: 1px solid rgba(87,70,62,.22);
+  border-radius: 50%;
+  background: rgba(255,250,246,.9);
+  cursor: pointer;
 }
 
-.gallery h2 {
-  font-size: clamp(2.4rem, 5vw, 4.6rem);
-  line-height: 1;
-  margin-bottom: 30px;
+.catalog-close span {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  width: 20px;
+  height: 1px;
+  background: var(--brown-deep);
+  transform: rotate(45deg);
 }
 
-.btn-light {
-  background: white;
+.catalog-close span:last-child {
+  transform: rotate(-45deg);
+}
+
+.catalog-header {
+  padding-right: 60px;
+  margin-bottom: 28px;
+}
+
+.catalog-header h2 {
   color: var(--brown-deep);
-  box-shadow: 0 12px 30px rgba(52,41,37,.1);
+  font: 500 clamp(2.8rem, 6vw, 5rem)/.95 "Cormorant Garamond", serif;
+  text-transform: uppercase;
+}
+
+.catalog-header > p:last-child {
+  max-width: 680px;
+  margin-top: 10px;
+  font-size: .85rem;
+}
+
+.catalog-feature {
+  position: relative;
+  overflow: hidden;
+  min-height: 520px;
+  border-radius: 20px;
+  background: #392d28;
+  box-shadow: 0 18px 44px rgba(71,48,39,.14);
+}
+
+.catalog-feature img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.catalog-counter {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  padding: 7px 13px;
+  border: 1px solid rgba(255,255,255,.28);
+  border-radius: 999px;
+  color: white;
+  background: rgba(31,22,19,.58);
+  backdrop-filter: blur(8px);
+  font-size: .68rem;
+  letter-spacing: .12em;
+}
+
+.catalog-thumbnails {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.catalog-thumb {
+  position: relative;
+  overflow: hidden;
+  min-height: 120px;
+  padding: 0;
+  border: 2px solid transparent;
+  border-radius: 14px;
+  background: #e4d6cc;
+  cursor: pointer;
+}
+
+.catalog-thumb img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.catalog-thumb.active {
+  border-color: var(--champagne);
+  box-shadow: 0 7px 20px rgba(87,70,62,.16);
 }
 
 .contact {
@@ -599,6 +824,18 @@ footer p {
   .service-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .concept-card {
+    min-height: 410px;
+  }
+
+  .catalog-panel {
+    padding: 40px;
+  }
+
+  .catalog-feature {
+    min-height: 440px;
+  }
 }
 
 @media (max-width: 650px) {
@@ -648,13 +885,61 @@ footer p {
     grid-template-columns: 1fr;
   }
 
-  .gallery {
-    min-height: 64vh;
-    background-attachment: scroll;
+  .concept-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
   }
 
-  .gallery-card {
-    padding: 38px 22px;
+  .concept-card {
+    min-height: 430px;
+    border-radius: 20px;
+  }
+
+  .concept-card::after {
+    inset: 10px;
+    border-radius: 14px;
+  }
+
+  .concept-card-copy {
+    left: 30px;
+    right: 30px;
+    bottom: 30px;
+  }
+
+  .catalog {
+    padding: 0;
+  }
+
+  .catalog-panel {
+    width: 100%;
+    height: 100%;
+    max-height: none;
+    padding: 74px 20px 30px;
+    border: 0;
+    border-radius: 0;
+  }
+
+  .catalog-close {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+  }
+
+  .catalog-header {
+    padding-right: 0;
+  }
+
+  .catalog-feature {
+    min-height: 54vh;
+    border-radius: 16px;
+  }
+
+  .catalog-thumbnails {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .catalog-thumb {
+    min-height: 100px;
   }
 
   .contact {
