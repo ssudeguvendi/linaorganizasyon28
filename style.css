@@ -136,32 +136,37 @@ a {
 .language-switch {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
-  padding: 7px 10px;
-  border: 1px solid var(--line);
+  gap: 2px;
+  padding: 3px;
+  border: 1px solid rgba(202,163,107,.58);
   border-radius: 999px;
-  background: rgba(255,255,255,.46);
+  background: linear-gradient(135deg, rgba(255,250,246,.94), rgba(231,207,171,.42));
+  box-shadow: 0 8px 22px rgba(87,70,62,.1), inset 0 0 0 1px rgba(255,255,255,.4);
 }
 
 .language-switch span {
   width: 1px;
-  height: 13px;
-  background: var(--champagne-soft);
+  height: 16px;
+  background: rgba(202,163,107,.46);
 }
 
 .language-switch button {
-  padding: 0;
+  min-width: 34px;
+  padding: 7px 9px;
   border: 0;
-  color: #8d7c73;
+  border-radius: 999px;
+  color: var(--brown);
   background: transparent;
   font: 600 .64rem/1 "Montserrat", sans-serif;
   letter-spacing: .08em;
   cursor: pointer;
-  transition: color .25s ease;
+  transition: color .25s ease, background .25s ease, box-shadow .25s ease;
 }
 
 .language-switch button[aria-pressed="true"] {
-  color: var(--blush-dark);
+  color: white;
+  background: linear-gradient(135deg, var(--blush-dark), #dca29a);
+  box-shadow: 0 5px 13px rgba(201,133,125,.28);
 }
 
 .language-switch button:focus-visible {
@@ -819,7 +824,7 @@ footer p {
     right: calc(5vw + 52px);
     z-index: 61;
     transform: translateY(-50%);
-    background: rgba(255,250,246,.82);
+    background: linear-gradient(135deg, rgba(255,250,246,.98), rgba(231,207,171,.58));
     backdrop-filter: blur(10px);
   }
 
