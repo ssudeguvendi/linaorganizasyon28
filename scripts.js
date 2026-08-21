@@ -100,11 +100,16 @@ const conceptCatalogs = {
     offers: [
       {
         title: { tr: 'Düğün Konsepti I', en: 'Wedding Concept I' },
+        src: 'konseptler/dugun.jpg',
+        alt: { tr: 'Şampanya tonlarında lüks düğün konsepti', en: 'Luxury wedding concept in champagne tones' }
+      },
+      {
+        title: { tr: 'Düğün Konsepti II', en: 'Wedding Concept II' },
         src: 'konseptler/dugun-konsept-1.png',
         alt: { tr: 'Beyaz güller ve şampanya detaylı düğün sahnesi', en: 'Wedding stage with white roses and champagne details' }
       },
       {
-        title: { tr: 'Düğün Konsepti II', en: 'Wedding Concept II' },
+        title: { tr: 'Düğün Konsepti III', en: 'Wedding Concept III' },
         src: 'konseptler/dugun-konsept-2.png',
         alt: { tr: 'Büyük beyaz çiçeklerle hazırlanan düğün masası', en: 'Wedding table styled with oversized white flowers' }
       }
