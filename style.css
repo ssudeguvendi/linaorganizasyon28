@@ -696,6 +696,68 @@ body.catalog-open {
   margin-top: 18px;
 }
 
+.catalog-offers[hidden],
+.catalog-feature[hidden],
+.catalog-thumbnails[hidden] {
+  display: none;
+}
+
+.catalog-offers {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.catalog-offer-card {
+  overflow: hidden;
+  border: 1px solid rgba(202,163,107,.42);
+  border-radius: 20px;
+  background: rgba(255,255,255,.64);
+  box-shadow: 0 16px 40px rgba(71,48,39,.1);
+}
+
+.catalog-offer-card > img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.catalog-offer-card > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 22px;
+}
+
+.catalog-offer-card h3 {
+  color: var(--brown-deep);
+  font: 500 clamp(1.35rem, 2.4vw, 1.9rem)/1 "Cormorant Garamond", serif;
+  letter-spacing: .035em;
+  text-transform: uppercase;
+}
+
+.catalog-offer-button {
+  flex: 0 0 auto;
+  padding: 13px 18px;
+  border-radius: 999px;
+  color: white;
+  background: linear-gradient(135deg, var(--blush-dark), #dca29a);
+  box-shadow: 0 8px 20px rgba(201,133,125,.24);
+  font-size: .64rem;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.catalog-offer-button:hover,
+.catalog-offer-button:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px rgba(201,133,125,.34);
+}
+
 .catalog-thumb {
   position: relative;
   overflow: hidden;
@@ -963,6 +1025,19 @@ footer p {
 
   .catalog-thumbnails {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .catalog-offers {
+    grid-template-columns: 1fr;
+  }
+
+  .catalog-offer-card > div {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .catalog-offer-button {
+    text-align: center;
   }
 
   .catalog-thumb {
