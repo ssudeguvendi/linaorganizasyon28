@@ -112,6 +112,11 @@ const conceptCatalogs = {
         title: { tr: 'Düğün Konsepti III', en: 'Wedding Concept III' },
         src: 'konseptler/dugun-konsept-2.png',
         alt: { tr: 'Büyük beyaz çiçeklerle hazırlanan düğün masası', en: 'Wedding table styled with oversized white flowers' }
+      },
+      {
+        title: { tr: 'Düğün Konsepti IV', en: 'Wedding Concept IV' },
+        src: 'konseptler/dugun-konsept-4.png',
+        alt: { tr: 'Beyaz çiçek kemeri ve şampanya ışıklarıyla düğün masası', en: 'Wedding table with a white floral arch and champagne lighting' }
       }
     ]
   },
