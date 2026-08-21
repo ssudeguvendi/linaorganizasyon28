@@ -133,6 +133,46 @@ a {
   box-shadow: 0 9px 24px rgba(201, 133, 125, .24);
 }
 
+.language-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255,255,255,.46);
+}
+
+.language-switch span {
+  width: 1px;
+  height: 13px;
+  background: var(--champagne-soft);
+}
+
+.language-switch button {
+  padding: 0;
+  border: 0;
+  color: #8d7c73;
+  background: transparent;
+  font: 600 .64rem/1 "Montserrat", sans-serif;
+  letter-spacing: .08em;
+  cursor: pointer;
+  transition: color .25s ease;
+}
+
+.language-switch button[aria-pressed="true"] {
+  color: var(--blush-dark);
+}
+
+.language-switch button:focus-visible {
+  outline: 2px solid var(--champagne);
+  outline-offset: 3px;
+}
+
+.mobile-language {
+  display: none;
+}
+
 .menu-toggle {
   display: none;
   border: 0;
@@ -210,6 +250,10 @@ a {
   font-size: clamp(3.4rem, 7vw, 6.5rem);
   line-height: .88;
   letter-spacing: .025em;
+}
+
+html[lang="en"] .hero h1 {
+  font-size: clamp(3.2rem, 6vw, 5.8rem);
 }
 
 .ornament {
@@ -379,8 +423,7 @@ a {
   margin-bottom: 26px;
 }
 
-.feature-card h3,
-.service h3 {
+.feature-card h3 {
   font-family: "Cormorant Garamond", serif;
   font-size: 1.55rem;
   text-transform: uppercase;
@@ -391,10 +434,6 @@ a {
 .feature-card p {
   font-size: .84rem;
   margin-top: 14px;
-}
-
-.services {
-  background: var(--ivory);
 }
 
 .section-title {
@@ -412,38 +451,6 @@ a {
 
 .ornament.dark {
   color: var(--champagne);
-}
-
-.service-grid {
-  max-width: 1250px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 18px;
-}
-
-.service {
-  text-align: center;
-  padding: 35px 18px;
-  border-top: 1px solid var(--line);
-  transition: .3s ease;
-}
-
-.service:hover {
-  background: rgba(255,255,255,.45);
-}
-
-.service-icon {
-  display: block;
-  min-height: 58px;
-  font-size: 2.5rem;
-  color: var(--champagne);
-}
-
-.service p {
-  margin-top: 10px;
-  font-size: .77rem;
-  line-height: 1.65;
 }
 
 .concepts {
@@ -801,6 +808,25 @@ footer p {
     box-shadow: -20px 0 50px rgba(52,41,37,.08);
   }
 
+  .nav .language-switch {
+    display: none;
+  }
+
+  .mobile-language {
+    display: inline-flex;
+    position: absolute;
+    top: 50%;
+    right: calc(5vw + 52px);
+    z-index: 61;
+    transform: translateY(-50%);
+    background: rgba(255,250,246,.82);
+    backdrop-filter: blur(10px);
+  }
+
+  .nav-button {
+    order: 3;
+  }
+
   .nav.open { right: 0; }
 
   .menu-toggle {
@@ -819,10 +845,6 @@ footer p {
 
   .feature-card {
     min-height: auto;
-  }
-
-  .service-grid {
-    grid-template-columns: repeat(2, 1fr);
   }
 
   .concept-card {
@@ -868,6 +890,10 @@ footer p {
     font-size: 3.4rem;
   }
 
+  html[lang="en"] .hero h1 {
+    font-size: 3rem;
+  }
+
   .hero-text {
     font-size: .88rem;
     max-width: 82vw;
@@ -879,10 +905,6 @@ footer p {
 
   .intro {
     gap: 45px;
-  }
-
-  .service-grid {
-    grid-template-columns: 1fr;
   }
 
   .concept-grid {
