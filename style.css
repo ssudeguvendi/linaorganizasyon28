@@ -751,40 +751,66 @@ body.catalog-open {
   margin-top: 4px;
 }
 
-.catalog-offer-button {
+.catalog-contact-card {
   display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 14px;
+  border: 1px solid rgba(202,163,107,.34);
+  border-radius: 14px;
+  background: rgba(255,250,246,.82);
+}
+
+.catalog-contact-card > strong {
+  color: var(--brown-deep);
+  font: 600 .78rem/1.3 "Montserrat", sans-serif;
+}
+
+.catalog-contact-card > span {
+  color: #8a766c;
+  font-size: .64rem;
+  letter-spacing: .04em;
+}
+
+.catalog-contact-controls {
+  display: grid;
+  grid-template-columns: 1.25fr .75fr;
+  gap: 7px;
+  margin-top: 9px;
+}
+
+.catalog-contact-button {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-  gap: 4px;
-  padding: 13px 18px;
+  min-height: 38px;
+  padding: 9px 12px;
+  border: 1px solid rgba(201,133,125,.34);
   border-radius: 999px;
-  color: white;
-  background: linear-gradient(135deg, var(--blush-dark), #dca29a);
-  box-shadow: 0 8px 20px rgba(201,133,125,.24);
   font-size: .64rem;
   font-weight: 600;
-  letter-spacing: .08em;
+  letter-spacing: .06em;
   text-transform: uppercase;
-  transition: transform .25s ease, box-shadow .25s ease;
   text-align: center;
+  transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
 }
 
-.catalog-offer-button strong {
-  font-size: .72rem;
+.catalog-contact-button.whatsapp {
+  color: white;
+  background: linear-gradient(135deg, var(--blush-dark), #dca29a);
+  box-shadow: 0 7px 18px rgba(201,133,125,.22);
 }
 
-.catalog-offer-button small {
-  font-size: .52rem;
-  font-weight: 500;
-  letter-spacing: .05em;
-  opacity: .84;
+.catalog-contact-button.call {
+  color: var(--brown-deep);
+  background: linear-gradient(135deg, #fffaf6, var(--champagne-soft));
+  box-shadow: 0 7px 18px rgba(202,163,107,.16);
 }
 
-.catalog-offer-button:hover,
-.catalog-offer-button:focus-visible {
+.catalog-contact-button:hover,
+.catalog-contact-button:focus-visible {
   transform: translateY(-2px);
-  box-shadow: 0 12px 26px rgba(201,133,125,.34);
+  box-shadow: 0 11px 24px rgba(87,70,62,.22);
 }
 
 .catalog-thumb {
