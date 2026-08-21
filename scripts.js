@@ -49,7 +49,7 @@ const translations = {
     dugunKicker: 'Zamansız bir masal', dugunTitle: 'Düğün', dugunAlt: 'Şampanya tonlarında lüks düğün konsepti',
     nisanKicker: 'Birlikte ilk adım', nisanTitle: 'Nişan', nisanAlt: 'Çiçeklerle hazırlanmış lüks nişan konsepti',
     proposalKicker: 'Unutulmaz bir evet', proposalTitle: 'Evlilik Teklifi', proposalAlt: 'Romantik ve lüks evlilik teklifi konsepti',
-    exploreGallery: 'Galeriyi keşfet', catalogClose: 'Kataloğu kapat', catalogEyebrow: 'Lina özel seçkisi', catalogPhotos: 'Katalog fotoğrafları', photoLabel: 'fotoğrafı', offerCta: 'WhatsApp’tan Teklif Al',
+    exploreGallery: 'Galeriyi keşfet', catalogClose: 'Kataloğu kapat', catalogEyebrow: 'Lina özel seçkisi', catalogPhotos: 'Katalog fotoğrafları', photoLabel: 'fotoğrafı', offerCta: 'WhatsApp’tan Teklif Al', contactPrompt: 'İletişim kurmak istediğiniz yetkiliyi seçin',
     contactEyebrow: 'Birlikte planlayalım', contactTitle: 'Özel gününüz için<br>ilk adımı atalım.', contactText: 'Tarih, konsept ve hayalinizdeki detayları bize anlatın. Lina Organizasyon 28 olarak size özel bir plan oluşturalım.', contactCta: 'Mesaj Gönder',
     footerText: 'En özel anlarınız, zarif dokunuşlarla.'
   },
@@ -69,7 +69,7 @@ const translations = {
     dugunKicker: 'A timeless fairytale', dugunTitle: 'Wedding', dugunAlt: 'Luxury wedding concept in champagne tones',
     nisanKicker: 'The first step together', nisanTitle: 'Engagement', nisanAlt: 'Luxury floral engagement concept',
     proposalKicker: 'An unforgettable yes', proposalTitle: 'Marriage Proposal', proposalAlt: 'Romantic luxury marriage proposal concept',
-    exploreGallery: 'Explore the gallery', catalogClose: 'Close catalogue', catalogEyebrow: 'The Lina signature collection', catalogPhotos: 'Catalogue photos', photoLabel: 'photo', offerCta: 'Get a Quote on WhatsApp',
+    exploreGallery: 'Explore the gallery', catalogClose: 'Close catalogue', catalogEyebrow: 'The Lina signature collection', catalogPhotos: 'Catalogue photos', photoLabel: 'photo', offerCta: 'Get a Quote on WhatsApp', contactPrompt: 'Choose the representative you would like to contact',
     contactEyebrow: 'Let’s plan together', contactTitle: 'Let’s take the first step<br>for your special day.', contactText: 'Tell us your date, concept and the details you imagine. Lina Organization 28 will create a plan designed especially for you.', contactCta: 'Send a Message',
     footerText: 'Your most precious moments, finished with elegant touches.'
   }
@@ -155,27 +155,47 @@ function selectCatalogImage(entry, index, total) {
 }
 
 function renderCatalogOffers(offers) {
-  const whatsappMessage = encodeURIComponent('Merhaba bu düğün konsepti için fiyat alabilir miyim');
-  const whatsappUrl = `https://wa.me/905454501028?text=${whatsappMessage}`;
+  const contacts = [
+    { name: 'Sevgi Turan', phone: '905454501028' },
+    { name: 'Önder Turan', phone: '905335007628' }
+  ];
 
   offers.forEach(offer => {
+    const imageUrl = new URL(offer.src, window.location.href).href;
+    const whatsappMessage = encodeURIComponent(
+      `Merhaba, ${offer.title.tr} için fiyat alabilir miyim?\n\nKonsept görseli: ${imageUrl}`
+    );
     const card = document.createElement('article');
     const image = document.createElement('img');
     const content = document.createElement('div');
     const title = document.createElement('h3');
-    const link = document.createElement('a');
+    const prompt = document.createElement('p');
+    const actions = document.createElement('div');
 
     card.className = 'catalog-offer-card';
     image.src = offer.src;
     image.alt = offer.alt[currentLanguage];
     title.textContent = offer.title[currentLanguage];
-    link.className = 'catalog-offer-button';
-    link.href = whatsappUrl;
-    link.target = '_blank';
-    link.rel = 'noreferrer';
-    link.textContent = translations[currentLanguage].offerCta;
+    prompt.className = 'catalog-offer-prompt';
+    prompt.textContent = translations[currentLanguage].contactPrompt;
+    actions.className = 'catalog-offer-actions';
 
-    content.append(title, link);
+    contacts.forEach(contact => {
+      const link = document.createElement('a');
+      const name = document.createElement('strong');
+      const label = document.createElement('small');
+      link.className = 'catalog-offer-button';
+      link.href = `https://wa.me/${contact.phone}?text=${whatsappMessage}`;
+      link.target = '_blank';
+      link.rel = 'noreferrer';
+      link.setAttribute('aria-label', `${offer.title[currentLanguage]} — ${contact.name}`);
+      name.textContent = contact.name;
+      label.textContent = translations[currentLanguage].offerCta;
+      link.append(name, label);
+      actions.appendChild(link);
+    });
+
+    content.append(title, prompt, actions);
     card.append(image, content);
     catalogOffers.appendChild(card);
   });
