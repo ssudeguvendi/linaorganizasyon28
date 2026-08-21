@@ -152,6 +152,7 @@ const catalogThumbnails = document.getElementById('catalogThumbnails');
 const catalogOffers = document.getElementById('catalogOffers');
 let catalogTrigger = null;
 let currentCatalogCategory = null;
+let currentOfferIndex = null;
 
 function selectCatalogImage(entry, index, total) {
   catalogMainImage.src = entry.src;
@@ -164,16 +165,20 @@ function selectCatalogImage(entry, index, total) {
   });
 }
 
-function renderCatalogOffers(offers) {
+function renderCatalogOffers(offers, category, selectedOfferIndex = null) {
   const contacts = [
     { name: 'Sevgi Turan', phone: '905454501028', displayPhone: '0545 450 10 28' },
     { name: 'Önder Turan', phone: '905335007628', displayPhone: '0533 500 76 28' }
   ];
 
-  offers.forEach(offer => {
-    const imageUrl = new URL(offer.src, window.location.href).href;
+  offers.forEach((offer, offerIndex) => {
+    const productUrl = new URL(window.location.href);
+    productUrl.search = '';
+    productUrl.hash = 'galeri';
+    productUrl.searchParams.set('concept', category);
+    productUrl.searchParams.set('offer', String(offerIndex));
     const whatsappMessage = encodeURIComponent(
-      `Merhaba, ${offer.title.tr} için fiyat alabilir miyim?\n\nKonsept görseli: ${imageUrl}`
+      `Merhaba, ${offer.title.tr} için fiyat alabilir miyim?\n\nÜrünü görüntüle: ${productUrl.href}`
     );
     const card = document.createElement('article');
     const image = document.createElement('img');
@@ -183,6 +188,8 @@ function renderCatalogOffers(offers) {
     const actions = document.createElement('div');
 
     card.className = 'catalog-offer-card';
+    card.dataset.offerIndex = String(offerIndex);
+    card.classList.toggle('selected', offerIndex === selectedOfferIndex);
     image.src = offer.src;
     image.alt = offer.alt[currentLanguage];
     title.textContent = offer.title[currentLanguage];
@@ -224,14 +231,22 @@ function renderCatalogOffers(offers) {
     card.append(image, content);
     catalogOffers.appendChild(card);
   });
+
+  if (selectedOfferIndex !== null) {
+    requestAnimationFrame(() => {
+      const selectedCard = catalogOffers.querySelector(`[data-offer-index="${selectedOfferIndex}"]`);
+      if (selectedCard) selectedCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  }
 }
 
-function openCatalog(category, trigger) {
+function openCatalog(category, trigger, selectedOfferIndex = null) {
   const selectedCatalog = conceptCatalogs[category];
   if (!selectedCatalog) return;
 
   catalogTrigger = trigger;
   currentCatalogCategory = category;
+  currentOfferIndex = selectedOfferIndex;
   catalogTitle.textContent = selectedCatalog.title[currentLanguage];
   catalogDescription.textContent = selectedCatalog.description[currentLanguage];
   catalogThumbnails.replaceChildren();
@@ -243,7 +258,7 @@ function openCatalog(category, trigger) {
   catalogOffers.hidden = !hasOffers;
 
   if (hasOffers) {
-    renderCatalogOffers(selectedCatalog.offers);
+    renderCatalogOffers(selectedCatalog.offers, category, selectedOfferIndex);
   } else {
     selectedCatalog.images.forEach((entry, index) => {
       const thumb = document.createElement('button');
@@ -270,6 +285,7 @@ function closeCatalog() {
   document.body.classList.remove('catalog-open');
   catalogMainImage.removeAttribute('src');
   currentCatalogCategory = null;
+  currentOfferIndex = null;
   if (catalogTrigger) catalogTrigger.focus();
 }
 
@@ -290,7 +306,7 @@ document.addEventListener('keydown', event => {
   }
 
   if (event.key === 'Tab') {
-    const focusable = [...catalog.querySelectorAll('button:not([disabled])')];
+    const focusable = [...catalog.querySelectorAll('a[href], button:not([disabled])')];
     const first = focusable[0];
     const last = focusable[focusable.length - 1];
     if (event.shiftKey && document.activeElement === first) {
@@ -341,7 +357,7 @@ function applyLanguage(language, persist = true) {
   }
 
   if (!catalog.hidden && currentCatalogCategory) {
-    openCatalog(currentCatalogCategory, catalogTrigger);
+    openCatalog(currentCatalogCategory, catalogTrigger, currentOfferIndex);
   }
 }
 
@@ -360,3 +376,19 @@ try {
   savedLanguage = 'tr';
 }
 applyLanguage(savedLanguage, false);
+
+const deepLinkParams = new URLSearchParams(window.location.search);
+const deepLinkConcept = deepLinkParams.get('concept');
+const deepLinkOffer = Number.parseInt(deepLinkParams.get('offer'), 10);
+const deepLinkCatalog = conceptCatalogs[deepLinkConcept];
+const deepLinkTrigger = deepLinkCatalog
+  ? document.querySelector(`[data-concept="${deepLinkConcept}"]`)
+  : null;
+
+if (deepLinkTrigger && deepLinkCatalog) {
+  const offerCount = deepLinkCatalog.offers ? deepLinkCatalog.offers.length : 0;
+  const offerIndex = Number.isInteger(deepLinkOffer) && deepLinkOffer >= 0 && deepLinkOffer < offerCount
+    ? deepLinkOffer
+    : null;
+  openCatalog(deepLinkConcept, deepLinkTrigger, offerIndex);
+}

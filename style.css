@@ -714,6 +714,13 @@ body.catalog-open {
   border-radius: 20px;
   background: rgba(255,255,255,.64);
   box-shadow: 0 16px 40px rgba(71,48,39,.1);
+  scroll-margin: 28px;
+  transition: border-color .3s ease, box-shadow .3s ease;
+}
+
+.catalog-offer-card.selected {
+  border-color: var(--champagne);
+  box-shadow: 0 0 0 3px rgba(202,163,107,.2), 0 22px 52px rgba(71,48,39,.16);
 }
 
 .catalog-offer-card > img {
