@@ -218,7 +218,7 @@ a {
   inset: 0;
   z-index: -2;
   background:
-    linear-gradient(90deg, rgba(255,250,246,.76) 0%, rgba(255,250,246,.52) 23%, rgba(255,250,246,.06) 46%, rgba(33,22,18,.1) 100%);
+    linear-gradient(90deg, rgba(255,250,246,.52) 0%, rgba(255,250,246,.34) 23%, rgba(255,250,246,.03) 46%, rgba(33,22,18,.08) 100%);
 }
 
 .hero-glow {
@@ -1087,7 +1087,7 @@ footer p {
   }
 
   .hero-shade {
-    background: linear-gradient(90deg, rgba(255,250,246,.78) 0%, rgba(255,250,246,.55) 52%, rgba(255,250,246,.08) 100%);
+    background: linear-gradient(90deg, rgba(255,250,246,.58) 0%, rgba(255,250,246,.4) 52%, rgba(255,250,246,.04) 100%);
   }
 
   .hero-glow {
