@@ -209,7 +209,7 @@ a {
   inset: 0;
   z-index: -3;
   background: url("lina-sahil.jpeg") center 56% / cover no-repeat;
-  filter: saturate(1.14) contrast(1.06);
+  filter: saturate(1.28) contrast(1.1) brightness(1.02);
   transform: scale(1.01);
 }
 
@@ -218,14 +218,14 @@ a {
   inset: 0;
   z-index: -2;
   background:
-    linear-gradient(90deg, rgba(255,250,246,.84) 0%, rgba(255,250,246,.68) 25%, rgba(255,250,246,.14) 48%, rgba(33,22,18,.12) 100%);
+    linear-gradient(90deg, rgba(255,250,246,.76) 0%, rgba(255,250,246,.52) 23%, rgba(255,250,246,.06) 46%, rgba(33,22,18,.1) 100%);
 }
 
 .hero-glow {
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: radial-gradient(circle at 18% 48%, rgba(255,255,255,.28), transparent 36%);
+  background: radial-gradient(circle at 16% 48%, rgba(255,255,255,.12), transparent 34%);
 }
 
 .hero-content {
@@ -875,11 +875,11 @@ footer p {
   }
 
   .hero-shade {
-    background: linear-gradient(90deg, rgba(255,250,246,.86) 0%, rgba(255,250,246,.7) 54%, rgba(255,250,246,.14) 100%);
+    background: linear-gradient(90deg, rgba(255,250,246,.78) 0%, rgba(255,250,246,.55) 52%, rgba(255,250,246,.08) 100%);
   }
 
   .hero-glow {
-    background: radial-gradient(circle at 18% 42%, rgba(255,255,255,.24), transparent 42%);
+    background: radial-gradient(circle at 16% 42%, rgba(255,255,255,.1), transparent 40%);
   }
 
   .hero-content {
