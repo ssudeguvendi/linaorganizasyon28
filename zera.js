@@ -1,5 +1,5 @@
 // Zera Art Film, mevcut Lina katalog sistemiyle açılır.
-// Ayrı pencere yok; iki fotoğraf katalog içinde aşağı doğru sıralanır.
+// İki fotoğraf katalog içinde aşağı doğru sıralanır.
 const zeraCatalog = {
   title: { tr: 'Zera Art Film', en: 'Zera Art Film' },
   description: {
@@ -8,22 +8,23 @@ const zeraCatalog = {
   },
   images: [],
   offers: [
-    {
-      title: { tr: 'Fotoğraf & Video — Kapak', en: 'Photography & Video — Cover' },
-      src: 'imageszeraartfilm-kapak.jpg',
-      alt: { tr: 'Zera Art Film fotoğraf ve video hizmeti', en: 'Zera Art Film photography and video service' }
-    },
-    {
-      title: { tr: 'Fotoğraf & Video — 2', en: 'Photography & Video — 2' },
-      src: 'imageszeraartfilm-2.jpg',
-      alt: { tr: 'Zera Art Film ikinci fotoğraf', en: 'Zera Art Film second photo' }
-    }
+    { title: { tr: 'Fotoğraf & Video — Kapak', en: 'Photography & Video — Cover' }, src: 'imageszeraartfilm-kapak.jpg', alt: { tr: 'Zera Art Film fotoğraf ve video hizmeti', en: 'Zera Art Film photography and video service' } },
+    { title: { tr: 'Fotoğraf & Video — 2', en: 'Photography & Video — 2' }, src: 'imageszeraartfilm-2.jpg', alt: { tr: 'Zera Art Film ikinci fotoğraf', en: 'Zera Art Film second photo' } }
   ]
 };
 
-// scripts.js içindeki mevcut tek katalog sistemi bunu kullanır.
 if (typeof conceptCatalogs !== 'undefined') {
   conceptCatalogs.zera = zeraCatalog;
+}
+
+// Zera kartını mevcut tek katalog sistemine bağla.
+const zeraCard = document.querySelector('[data-zera-open]');
+if (zeraCard) {
+  zeraCard.dataset.concept = 'zera';
+  zeraCard.removeAttribute('data-zera-open');
+  zeraCard.addEventListener('click', () => {
+    if (typeof openCatalog === 'function') openCatalog('zera', zeraCard);
+  });
 }
 
 // Eski ayrı Zera penceresinden kalmış eleman varsa kaldır.
