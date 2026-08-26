@@ -8,8 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&family=Parisienne&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=18">
-  <link rel="stylesheet" href="zera.css?v=3">
+  <link rel="stylesheet" href="style.css?v=19">
+  <link rel="stylesheet" href="zera.css?v=4">
 </head>
 <body>
   <header class="site-header">
@@ -26,13 +26,24 @@
         <button class="concept-card reveal" type="button" data-concept="kina" aria-haspopup="dialog"><img src="konseptler/kina.jpg" alt="Lüks kına gecesi konsepti" loading="lazy"><span class="concept-card-shade"></span><span class="concept-card-copy"><small>Geleneksel zarafet</small><strong>Kına</strong><i>Galeriyi keşfet <b>→</b></i></span></button>
         <button class="concept-card reveal" type="button" data-concept="dugun" aria-haspopup="dialog"><img src="konseptler/dugun.jpg" alt="Şampanya tonlarında lüks düğün konsepti" loading="lazy"><span class="concept-card-shade"></span><span class="concept-card-copy"><small>Zamansız bir masal</small><strong>Düğün</strong><i>Galeriyi keşfet <b>→</b></i></span></button>
         <button class="concept-card reveal" type="button" data-concept="nisan" aria-haspopup="dialog"><img src="konseptler/nisan.jpg" alt="Çiçeklerle hazırlanmış lüks nişan konsepti" loading="lazy"><span class="concept-card-shade"></span><span class="concept-card-copy"><small>Birlikte ilk adım</small><strong>Nişan</strong><i>Galeriyi keşfet <b>→</b></i></span></button>
-        <button class="concept-card reveal zera-concept-card" type="button" data-concept="zera" aria-haspopup="dialog"><img src="imageszeraartfilm-kapak.jpg" alt="Zera Art Film fotoğraf ve video hizmeti" loading="lazy"><span class="concept-card-shade"></span><span class="concept-card-copy"><small>Fotoğraf &amp; Video</small><strong>Zera Art Film</strong><i>Kataloğu incele <b>→</b></i></span></button>
+        <button class="concept-card reveal zera-concept-card" type="button" data-zera-open aria-haspopup="dialog"><img src="imageszeraartfilm-kapak.jpg" alt="Zera Art Film fotoğraf ve video hizmeti" loading="lazy"><span class="concept-card-shade"></span><span class="concept-card-copy"><small>Fotoğraf &amp; Video</small><strong>Zera Art Film</strong><i>Kataloğu incele <b>→</b></i></span></button>
       </div>
     </section>
+
+    <div class="concept-catalog" id="conceptCatalog" aria-hidden="true">
+      <div class="catalog-backdrop" data-catalog-close></div>
+      <div class="catalog-dialog" role="dialog" aria-modal="true" aria-labelledby="catalogTitle">
+        <button class="catalog-close" type="button" data-catalog-close aria-label="Kataloğu kapat">×</button>
+        <div class="catalog-head"><p class="eyebrow" data-i18n="catalogEyebrow">Lina özel seçkisi</p><h2 id="catalogTitle"></h2><p id="catalogDescription"></p></div>
+        <div class="catalog-feature"><div class="catalog-image-wrap"><img id="catalogMainImage" src="" alt=""><span id="catalogCounter" class="catalog-counter"></span></div><div id="catalogThumbnails" class="catalog-thumbnails"></div></div>
+        <div id="catalogOffers" class="catalog-offers"></div>
+      </div>
+    </div>
+
     <section class="intro section" id="hakkimizda"><div class="intro-copy reveal"><p class="eyebrow">Lina Organizasyon 28</p><h2 data-i18n-html="aboutTitle">Zarafet,<br>detaylarda gizlidir.</h2><div class="short-line"></div><p data-i18n="aboutText">Özel günlerinizi unutulmaz kılmak için her ayrıntıyı özenle planlıyor; estetik, sıcak ve size özel organizasyonlar tasarlıyoruz.</p><a class="text-link" href="#iletisim"><span>Bizi tanıyın</span><span>→</span></a></div><div class="feature-grid"><article class="feature-card reveal"><div class="icon">❀</div><h3>Kişiye Özel Tasarım</h3><p>Tarzınıza ve hayallerinize göre özgün konseptler oluşturuyoruz.</p></article><article class="feature-card reveal"><div class="icon">♢</div><h3>Profesyonel Ekip</h3><p>Planlamadan uygulamaya kadar tüm süreci özenle yönetiyoruz.</p></article><article class="feature-card reveal"><div class="icon">✧</div><h3>Kusursuz Organizasyon</h3><p>Her ayrıntıyı düşünerek gününüzü rahat ve unutulmaz hale getiriyoruz.</p></article></div></section>
     <section class="contact section" id="iletisim"><div class="contact-copy reveal"><p class="eyebrow">Birlikte planlayalım</p><h2>Özel gününüz için<br>ilk adımı atalım.</h2><p>Tarih, konsept ve hayalinizdeki detayları bize anlatın. Lina Organizasyon 28 olarak size özel bir plan oluşturalım.</p></div><div class="contact-box reveal"><p class="contact-label">Instagram</p><p class="contact-handle">@linaorganizasyon28</p><a class="btn btn-primary" href="https://www.instagram.com/linaorganizasyon28/" target="_blank" rel="noreferrer">Mesaj Gönder</a></div></section>
   </main>
   <footer><div class="footer-logo">Lina Organizasyon 28</div><p>En özel anlarınız, zarif dokunuşlarla.</p><p class="copy">© <span id="year"></span> Lina Organizasyon 28</p></footer>
-  <script src="scripts.js?v=16"></script><script src="zera.js?v=3"></script>
+  <script src="scripts.js?v=17"></script><script src="zera.js?v=4"></script>
 </body>
 </html>
