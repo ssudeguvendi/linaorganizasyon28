@@ -1,0 +1,162 @@
+.zera-concept-card {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  border: 0;
+  cursor: pointer;
+  text-align: left;
+  color: #fff;
+  background: #eaded6;
+}
+
+.zera-concept-card img {
+  width: 100%;
+  height: 100%;
+  min-height: 390px;
+  object-fit: cover;
+  display: block;
+  transition: transform .65s cubic-bezier(.2,.7,.25,1), filter .45s ease;
+}
+
+.zera-concept-card:hover img {
+  transform: scale(1.045);
+  filter: saturate(1.04);
+}
+
+.zera-service {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
+  gap: clamp(35px, 6vw, 90px);
+  align-items: center;
+  max-width: 1180px;
+  margin: 72px auto 0;
+  padding: 42px;
+  border: 1px solid rgba(202,163,107,.28);
+  border-radius: 30px;
+  background: rgba(255,255,255,.58);
+  box-shadow: 0 24px 70px rgba(71,48,39,.08);
+}
+
+.zera-service-image {
+  overflow: hidden;
+  border-radius: 22px;
+  aspect-ratio: 4 / 3;
+  box-shadow: 0 18px 45px rgba(71,48,39,.13);
+}
+
+.zera-service-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.zera-service-copy {
+  padding: 10px 4px;
+}
+
+.zera-kicker {
+  margin-bottom: 7px;
+  color: var(--blush-dark);
+  text-transform: uppercase;
+  letter-spacing: .13em;
+  font-size: .69rem;
+  font-weight: 600;
+}
+
+.zera-service h2 {
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(2.8rem, 5vw, 4.6rem);
+  line-height: .95;
+  font-weight: 500;
+  color: var(--brown-deep);
+}
+
+.zera-service .short-line {
+  margin: 22px 0;
+}
+
+.zera-description {
+  max-width: 570px;
+  font-size: .9rem;
+  color: var(--brown);
+}
+
+.zera-contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+  margin-top: 25px;
+}
+
+.zera-contact div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.zera-contact span {
+  color: var(--blush-dark);
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  font-size: .62rem;
+}
+
+.zera-contact strong {
+  color: var(--brown-deep);
+  font-size: .82rem;
+  font-weight: 600;
+}
+
+.zera-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.zera-phone {
+  border: 1px solid rgba(202,163,107,.55);
+  color: var(--brown-deep);
+  background: rgba(255,255,255,.72);
+}
+
+@media (max-width: 900px) {
+  .zera-service {
+    grid-template-columns: 1fr;
+    padding: 24px;
+    margin-top: 48px;
+  }
+
+  .zera-service-image {
+    aspect-ratio: 16 / 11;
+  }
+}
+
+@media (max-width: 560px) {
+  .zera-concept-card img {
+    min-height: 330px;
+  }
+
+  .zera-service {
+    padding: 16px;
+    border-radius: 22px;
+  }
+
+  .zera-service-image {
+    border-radius: 17px;
+  }
+
+  .zera-service-copy {
+    padding: 7px 5px 12px;
+  }
+
+  .zera-contact {
+    gap: 18px;
+  }
+
+  .zera-actions .btn {
+    width: 100%;
+  }
+}
